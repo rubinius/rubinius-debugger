@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = "~> 2.0"
 
+  spec.add_runtime_dependency "rubinius-compiler", "~> 2.0"
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake", "~> 10.0"
 end
