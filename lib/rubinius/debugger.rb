@@ -1,4 +1,4 @@
-require 'rubysl/readline'
+require 'readline'
 require 'rubinius/debugger/frame'
 require 'rubinius/debugger/commands'
 require 'rubinius/debugger/breakpoint'
