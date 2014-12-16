@@ -238,7 +238,7 @@ class Rubinius::Debugger
     end
   end
 
-  def eval_code(args)
+  def eval_code(args, pretty = false)
     obj = @current_frame.run(args)
 
     idx = @user_variables
@@ -246,7 +246,13 @@ class Rubinius::Debugger
 
     str = "$d#{idx}"
     Rubinius::Globals[str.to_sym] = obj
-    puts "#{str} = #{obj.inspect}\n"
+
+    if pretty
+      require 'pp'
+      puts "#{str} = #{obj.pretty_inspect}\n"
+    else
+      puts "#{str} = #{obj.inspect}\n"
+    end
   end
 
   def frame(num)
