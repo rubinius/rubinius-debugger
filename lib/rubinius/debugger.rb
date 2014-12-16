@@ -265,7 +265,7 @@ class Rubinius::Debugger
     end
   end
 
-  def set_breakpoint_method(descriptor, method, line=nil, condition=nil)
+  def set_breakpoint_method(descriptor, method, line=nil, condition=nil, commands=nil, index=nil)
     exec = method.executable
 
     unless exec.kind_of?(Rubinius::CompiledCode)
@@ -288,9 +288,14 @@ class Rubinius::Debugger
     bp = BreakPoint.new(descriptor, exec, ip, line, condition)
     bp.activate
 
-    @breakpoints << bp
-
-    info "Set breakpoint #{@breakpoints.size}: #{bp.location}"
+    if index
+      bp.set_commands(commands)
+      @breakpoints[index] = bp
+      info "Set breakpoint #{index+1}: #{bp.location}"
+    else
+      @breakpoints << bp
+      info "Set breakpoint #{@breakpoints.size}: #{bp.location}"
+    end
 
     return bp
   end
