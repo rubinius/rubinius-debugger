@@ -193,6 +193,7 @@ class Rubinius::Debugger
       cmd = @last_command
     else
       @last_command = cmd
+      Readline::History << cmd
     end
 
     command, args = cmd.to_s.strip.split(/\s+/, 2)
