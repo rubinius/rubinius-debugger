@@ -104,7 +104,11 @@ class Rubinius::Debugger
       @name = name
       @line = line
       @list = list
+      @commands = nil
+      @condition = nil
     end
+
+    attr_reader :condition, :commands
 
     def descriptor
       "#{@klass_name}#{@which}#{@name}"
@@ -129,7 +133,8 @@ class Rubinius::Debugger
 
       @debugger.info "Resolved breakpoint for #{@klass_name}#{@which}#{@name}"
 
-      @debugger.set_breakpoint_method descriptor, method, @line
+      index = @debugger.breakpoints.index(self)
+      @debugger.set_breakpoint_method descriptor, method, @line, @condition, @commands, index
 
       return true
     end
@@ -142,6 +147,22 @@ class Rubinius::Debugger
       if @list
         @list.delete self
       end
+    end
+
+    def set_commands(commands)
+      @commands = commands
+    end
+
+    def has_commands?
+      !@commands.nil?
+    end
+
+    def set_condition(condition)
+      @condition = condition
+    end
+
+    def has_condition?
+      !@condition.nil?
     end
   end
 end
