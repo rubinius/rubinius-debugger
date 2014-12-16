@@ -505,6 +505,19 @@ next to the inspect output of the value.
       end
     end
 
+    class PrettyPrintEvalCode < Command
+      pattern "pp"
+      help "Run code in the current context"
+      ext_help <<-HELP
+Run code in the context of the current frame. Like 'eval', but
+pretty prints the result with 'pp'.
+      HELP
+
+      def run(args)
+        @debugger.eval_code(args, true)
+      end
+    end
+
     class Disassemble < Command
       pattern "dis", "disassemble"
       help "Show the bytecode for the current line or method"
