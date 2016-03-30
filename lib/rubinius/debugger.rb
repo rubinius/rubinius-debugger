@@ -113,7 +113,7 @@ class Rubinius::Debugger
     spinup_thread
 
     # Feed info to the debugger thread!
-    locs = Rubinius::VM.backtrace(offset + 1, true)
+    locs = Rubinius::VM.backtrace(offset + 1)
 
     method = Rubinius::CompiledCode.of_sender
 
