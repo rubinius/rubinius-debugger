@@ -3,7 +3,7 @@ require 'rubinius/debugger/frame'
 require 'rubinius/debugger/commands'
 require 'rubinius/debugger/breakpoint'
 require 'rubinius/debugger/display'
-require 'rubinius/compiler/iseq'
+require 'rubinius/code/compiler/iseq'
 
 #
 # The Rubinius reference debugger.
