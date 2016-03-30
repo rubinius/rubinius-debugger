@@ -1,5 +1,5 @@
 module Rubinius
   module Debugger
-    VERSION = "2.2.1"
+    VERSION = "2.3"
   end
 end
