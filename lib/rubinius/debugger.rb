@@ -17,7 +17,7 @@ class Rubinius::Debugger
   include Rubinius::Debugger::Display
 
   # Find the source for the kernel.
-  ROOT_DIR = File.expand_path("../", Rubinius::KERNEL_PATH)
+  ROOT_DIR = File.expand_path("../", Rubinius::CORE_PATH)
 
   # Create a new debugger object. The debugger starts up a thread
   # which is where the command line interface executes from. Other
