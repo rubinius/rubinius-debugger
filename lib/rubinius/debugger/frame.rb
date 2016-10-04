@@ -16,7 +16,7 @@ class Rubinius::Debugger
       @binding ||= Binding.setup(
                      @location.variables,
                      @location.method,
-                     @location.constant_scope)
+                     @location.lexical_scope)
     end
 
     def method
